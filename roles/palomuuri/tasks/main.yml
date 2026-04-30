@@ -1,0 +1,12 @@
+- ufw:
+    rule: allow
+    name: OpenSSH
+  notify: Restart UFW
+
+- service:
+    name: ufw
+    enabled: true
+
+- service:
+    name: ufw
+    state: started

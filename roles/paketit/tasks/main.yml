@@ -1,0 +1,16 @@
+- apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- apt:
+    name:
+      - git
+      - ufw
+      - nano
+      - htop
+      - curl
+      - build-essential
+      - python3
+      - nodejs
+      - openssh-client
+    state: present
