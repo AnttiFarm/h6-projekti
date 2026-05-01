@@ -1,8 +1,4 @@
 - ufw:
     rule: allow
-    name: OpenSSH
-
-- service:
-    name: ufw
-    state: started
-    enabled: true
+    port: '22'
+    state: enabled
