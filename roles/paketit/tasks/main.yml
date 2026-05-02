@@ -13,4 +13,5 @@
       - python3
       - nodejs
       - openssh-client
+      - fail2ban
     state: present

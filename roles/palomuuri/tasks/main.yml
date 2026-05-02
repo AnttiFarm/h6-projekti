@@ -1,4 +1,19 @@
 - ufw:
-    rule: allow
-    port: '22'
+    policy: deny
     state: enabled
+    logging: on
+
+- ufw:
+    rule: allow
+    port: '22,80,443'
+    proto: tcp
+
+- ufw:
+    rule: allow
+    port: '68'
+    proto: udp
+
+- service:
+    name: fail2ban
+    state: started
+    enabled: yes
