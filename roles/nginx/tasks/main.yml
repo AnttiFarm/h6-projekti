@@ -19,6 +19,13 @@
     group: "web"
     mode: "0775"
     recurse: yes
+
+- copy:
+    src: "index.html"
+    dest: "/home/nginx/publicsite"
+    owner: "nginx"
+    group: "web"
+    mode: "0775"
     
 - copy:
     src: "publicsite"

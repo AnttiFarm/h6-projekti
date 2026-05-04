@@ -16,11 +16,6 @@
     port: '22,80,443'
     proto: tcp
 
-- ufw:
-    rule: allow
-    port: '68,22,80,443'
-    proto: udp
-
 - apt:
     name: fail2ban
     state: present
