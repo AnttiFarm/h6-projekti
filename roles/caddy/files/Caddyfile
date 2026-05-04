@@ -1,0 +1,14 @@
+# Managed file, changes will be overwritten.
+
+
+:8080 {
+        
+        root * /home/caddyuser/publicsite
+
+
+        
+        file_server
+
+        
+}
+

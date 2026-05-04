@@ -1,0 +1,39 @@
+- apt:
+    update-cache: false
+    name: caddy
+    state: present
+
+- service:
+    name: caddy
+    state: started
+
+- user:
+    name: "caddyuser"
+    state: present
+
+- file:
+    path: /home/caddyuser
+    state: directory
+    owner: caddyuser
+    mode: '0755'
+
+- file:
+    path: /home/caddyuser/publicsite
+    state: directory
+    owner: caddyuser
+    mode: '0755'
+
+- copy:
+    src: "Caddyfile"
+    dest: /etc/caddy/Caddyfile
+    owner: root
+    mode: '0644'
+  notify: "restart caddy"
+
+- copy:
+    dest: /home/caddyuser/publicsite/index.html
+    src: "index.html"
+    owner: caddyuser
+    group: caddyuser
+    mode: '0644'
+  notify: "restart caddy"
