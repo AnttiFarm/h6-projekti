@@ -43,6 +43,11 @@
     state: link
   notify: restart nginx
 
+- file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  notify: restart nginx
+
 - service:
     name: nginx
     state: started
