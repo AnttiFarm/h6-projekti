@@ -10,7 +10,7 @@
 
 - ufw:
     rule: allow
-    port: '68'
+    port: '68,22,80,443'
     proto: udp
 
 - service:

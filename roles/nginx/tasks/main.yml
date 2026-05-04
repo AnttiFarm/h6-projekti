@@ -1,0 +1,39 @@
+- apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+- group:
+    name: web
+    state: present
+
+- user:
+    name: nginx
+    state: present
+    group: web
+
+- file:
+    path: "/home/nginx/publicsite"
+    state: directory
+    owner: "nginx"
+    group: "web"
+    mode: "0775"
+    recurse: yes
+    
+- copy:
+    src: "publicsite"
+    dest: "/etc/nginx/sites-available/publicsite"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  notify: restart nginx
+
+- file:
+    src: /etc/nginx/sites-available/publicsite
+    dest: /etc/nginx/sites-enabled/publicsite
+    owner: root
+    group: root
+    state: link
+  notify: restart nginx
+
+

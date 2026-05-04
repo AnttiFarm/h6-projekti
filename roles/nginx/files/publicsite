@@ -1,0 +1,14 @@
+server {
+	listen 80;
+	listen [::]:80 default_server;
+
+	root /home/nginx/publicsite;
+
+	index index.html index.htm;
+
+	server_name _;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
