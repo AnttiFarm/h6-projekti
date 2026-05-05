@@ -31,7 +31,7 @@
     dest: /home/nginx/publicsite
     owner: "nginx"
     group: "web"
-    mode: "0775"
+    mode: "0664"
     force: false
     
 - copy:

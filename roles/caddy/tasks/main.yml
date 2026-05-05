@@ -33,7 +33,7 @@
     src: "index.html"
     owner: caddyuser
     group: web
-    mode: '0775'
+    mode: '0664'
     force: false
   notify: "restart caddy"
 
