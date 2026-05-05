@@ -1,8 +1,8 @@
 # H6-project, Simple web server
 
-This ansible playbook installs nginx and caddy on a Debian or Ubuntu pc. It creates two users, nginx and caddyuser which hold the websites. These directories can be modified by anyone in the group "web". Nginx is on default port 80, caddy is on port 8080.
+This ansible playbook installs both nginx and caddy. Nginx is on default port 80, caddy is on port 8080.
 
-The playbook also installs ufw and fail2ban. Ufw is setup to block everything except ports 22,80,443 and 8080 on TCP.
+The playbook also installs ufw and fail2ban and configures them.
 
 <table>
   <tr>
@@ -10,6 +10,49 @@ The playbook also installs ufw and fail2ban. Ufw is setup to block everything ex
     <td><img width="430" height="165" alt="2026-05-05 18_48_27" src="https://github.com/user-attachments/assets/91c29d68-a5cc-49b0-9e74-cf209400bdbf" /></td>
   </tr>
 </table>
+
+## How it works
+
+There are 3 roles: nginx, caddy and palomuuri(firewall). The roles create two users: nginx and caddyuser. These users get directories which have the webpages. A group called web is made, anyone in this group can modify the directories of nginx and caddyuser. 
+
+Nginx and caddy do virtually the same things: 
+
+- Install nginx and caddy
+- Create a group called web
+- Create a user with a directory for keeping website files(index.html)
+- Users in web-group can modify these files
+- Make sure our site file is in the nginx/caddy enabled sites
+
+Palomuuri role installs ufw and fail2ban, and configures ufw to deny everything except ports 22,80,443 and 8080 on TCP.
+
+<pre>
+./
+├── ansible.cfg
+├── hosts.ini
+├── LICENSE
+├── README.md
+├── roles/
+│   ├── caddy/
+│   │   ├── files/
+│   │   │   ├── Caddyfile
+│   │   │   └── index.html
+│   │   ├── handlers/
+│   │   │   └── main.yml
+│   │   └── tasks/
+│   │       └── main.yml
+│   ├── nginx/
+│   │   ├── files/
+│   │   │   ├── index.html
+│   │   │   └── publicsite
+│   │   ├── handlers/
+│   │   │   └── main.yml
+│   │   └── tasks/
+│   │       └── main.yml
+│   └── palomuuri/
+│       └── tasks/
+│           └── main.yml
+└── site.yml
+</pre>
 
 ## Setup
 
@@ -27,4 +70,4 @@ The playbook also installs ufw and fail2ban. Ufw is setup to block everything ex
 
 ## Authors
 
-Antti Färm & [snorhh](https://github.com/snorhh/)
+Antti Färm & Sanna Noronen
