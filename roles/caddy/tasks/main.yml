@@ -11,13 +11,15 @@
     path: /home/caddyuser
     state: directory
     owner: caddyuser
-    mode: '0755'
+    group: web
+    mode: '0775'
 
 - file:
     path: /home/caddyuser/publicsite
     state: directory
     owner: caddyuser
-    mode: '0755'
+    group: web
+    mode: '0775'
 
 - copy:
     src: "Caddyfile"
@@ -30,8 +32,9 @@
     dest: /home/caddyuser/publicsite/index.html
     src: "index.html"
     owner: caddyuser
-    group: caddyuser
-    mode: '0644'
+    group: web
+    mode: '0775'
+    force: false
   notify: "restart caddy"
 
 - service:

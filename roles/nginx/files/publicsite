@@ -1,5 +1,5 @@
-# Managed file, changes will be overwritten.
 
+# Managed file, changes will be overwritten.
 
 server {
 	listen 80;
@@ -9,9 +9,51 @@ server {
 
 	index index.html index.htm;
 
-	server_name _;
+	server_name H6Server;
 
 	location / {
 		try_files $uri $uri/ =404;
 	}
+
+location /inspect {
+    default_type text/html;
+    return 200 '<!DOCTYPE html>
+<html>
+<head>
+    <title>Request Inspector</title>
+</head>
+<body>
+
+	<p><a href="/">Back to Home</a></p>
+
+    <div class="container">
+        <h1>Request Inspector - NGINX</h1>
+        <h2>Request Details</h2>
+        <div class="header">
+            <div><span class="label">Method:</span> <span class="value">$request_method</span></div>
+            <div><span class="label">Path:</span> <span class="value">$request_uri</span></div>
+            <div><span class="label">Query String:</span> <span class="value">$query_string</span></div>
+        </div>
+        <h2>Connection Info</h2>
+        <div class="header">
+            <div><span class="label">Remote Address:</span> <span class="value">$remote_addr</span></div>
+            <div><span class="label">Remote Port:</span> <span class="value">$remote_port</span></div>
+        </div>
+        <h2>HTTP Headers</h2>
+        <div class="header">
+            <div><span class="label">User-Agent:</span> <span class="value">$http_user_agent</span></div>
+            <div><span class="label">Host:</span> <span class="value">$http_host</span></div>
+            <div><span class="label">Referer:</span> <span class="value">$http_referer</span></div>
+        </div>
+        <h2>Server Info</h2>
+        <div class="header">
+            <div><span class="label">Protocol:</span> <span class="value">$server_protocol</span></div>
+            <div><span class="label">Server Address:</span> <span class="value">$server_addr</span></div>
+            <div><span class="label">Server Port:</span> <span class="value">$server_port</span></div>
+        </div>
+    </div>
+</body>
+</html>';
 }
+}
+
