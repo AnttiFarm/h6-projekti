@@ -4,13 +4,19 @@
     state: present
 
 - group:
+    name: caddyuser
+    state: present
+
+- group:
     name: web
     state: present
 
 - user:
     name: "caddyuser"
     state: present
-    group: web
+    group: caddyuser
+    groups: web
+    append: yes
 
 - file:
     path: /home/caddyuser

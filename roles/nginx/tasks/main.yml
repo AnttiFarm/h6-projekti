@@ -4,13 +4,19 @@
     update_cache: yes
 
 - group:
+    name: nginx
+    state: present
+
+- group:
     name: web
     state: present
 
 - user:
     name: nginx
     state: present
-    group: web
+    group: nginx
+    groups: web
+    append: yes
 
 - file:
     path: /home/nginx
