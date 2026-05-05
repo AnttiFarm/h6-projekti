@@ -27,4 +27,4 @@ The playbook also installs ufw and fail2ban. Ufw is setup to block everything ex
 
 ## Authors
 
-Antti Färm & Sanna Noronen
+Antti Färm & [snorh](https://github.com/snorhh/)
