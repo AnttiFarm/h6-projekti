@@ -1,4 +1,4 @@
-# H6-project, Simple web server
+# H6-project, Simple web server for course Palvelinten hallinta
 
 This ansible playbook installs both nginx and caddy. Nginx is on default port 80, caddy is on port 8080.
 
@@ -67,6 +67,10 @@ Palomuuri role installs ufw and fail2ban, and configures ufw to deny everything 
 5. Run site.yml
 
 6. Go to your favorite web browser and type in localhost(or whatever you configured). By default you'll be on the nginx sites. To go to caddy, change the port to 8080.
+
+## Video demonstration
+
+https://video.haaga-helia.fi/media/t/0_oy17mahx
 
 ## Authors
 
