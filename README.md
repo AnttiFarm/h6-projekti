@@ -70,7 +70,7 @@ Palomuuri role installs ufw and fail2ban, and configures ufw to deny everything 
 
 ## Video demonstration
 
-https://video.haaga-helia.fi/media/t/0_oy17mahx
+https://video.haaga-helia.fi/media/t/0_14qp4d0s
 
 ## Authors
 
