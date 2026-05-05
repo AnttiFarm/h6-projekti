@@ -24,7 +24,7 @@
     state: directory
     owner: "nginx"
     group: "web"
-    mode: "0775"
+    mode: "2775"
 
 - copy:
     src: "index.html"
